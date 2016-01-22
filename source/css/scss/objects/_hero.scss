@@ -4,8 +4,10 @@
   .mega {
     position: relative;
     top: 80px;
-    font-weight: 700;
-    color: mix($aqua,$grey-1,30%);
+    font-weight: 400;
+    color: mix($aqua,$grey-1,50%);
     z-index: -1;
+    font-family: $display;
+    letter-spacing: 5px;
   }
 }
