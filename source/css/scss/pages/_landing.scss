@@ -1,0 +1,15 @@
+.post-list__hero {
+  .mega {
+    color: rgba($orange,0.75);
+  }
+}
+
+.post-list__hero-image {
+  margin: 42px 0;
+  padding: 42px 0 84px;
+  border: 16px solid $white;
+  background-image: image-url('hero-bread.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}

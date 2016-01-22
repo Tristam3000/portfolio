@@ -1,0 +1,19 @@
+body {
+  background-color: $grey-1;
+  color: $black;
+  margin: 20px;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  &:after {
+    content: "";
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    //z-index: 99;
+    display: block;
+    border: 20px solid $white;
+    pointer-events: none;
+  }
+}

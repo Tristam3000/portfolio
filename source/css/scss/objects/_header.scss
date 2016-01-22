@@ -1,0 +1,120 @@
+.nav--primary {
+  position: fixed;
+  top: 16px;
+  width: 100%;
+  padding: 16px;
+  .nav__link {
+    font-size: 0.9rem;
+  }
+}
+
+.nav__inner {
+  display: none;
+  float: right;
+  margin-right: 48px;
+  .nav__link {
+    position: relative;
+    &:after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      display: block;
+      width: calc(100% - 32px);
+      height: 2px;
+      background-color: $navy;
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: all 0.2s $cubic;
+    }
+    &:hover {
+      &:after {
+        transform: scaleX(1);
+      }
+    }
+  }
+  @media only screen and (min-width: 480px) {
+    display: block;
+  }
+}
+
+.nav__link {
+  display: inline-block;
+  padding: 0 16px;
+  color: $navy;
+}
+
+.nav__link--alpha {
+  &:before {
+    content: "";
+    display: inline-block;
+    margin-right: 8px;
+    width: 0.5rem;
+    height: 0.5rem;
+    background-color: $grey-2;
+    border-radius: 50%;
+    transition: all 0.2s $cubic;
+  }
+  &:hover {
+    &:before {
+      background-color: $aqua;
+    }
+  }
+}
+
+.nav__mobile {
+  position: relative;
+  float: right;
+  margin-right: 48px;
+  display: block;
+  width: 32px;
+  height: 24px;
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 32px;
+    height: 2px;
+    transition: all 0.2s $cubic;
+  }
+  &:before {
+    top: 50%;
+    margin-top: -1px;
+  }
+  &:after {
+    bottom: 0;
+    transform-origin: right;
+  }
+  &.is-active {
+    &:after {
+      transform: rotate(-45deg) translate(-6px,0);
+      top: 0;
+    }
+    &:before {
+      opacity: 0;
+    }
+    .nav__mobile-icon {
+      top: 0;
+      transform: rotate(45deg) translate(6px,0);
+    }
+  }
+  @media only screen and (min-width: 480px) {
+    display: none;
+  }
+}
+
+.nav__mobile-icon,
+.nav__mobile:before,
+.nav__mobile:after {
+  background-color: $navy;
+}
+
+.nav__mobile-icon {
+  position: absolute;
+  top: 0;
+  display: block;
+  width: 32px;
+  height: 2px;
+  transition: all 0.2s $cubic;
+  transform-origin: left;
+}
