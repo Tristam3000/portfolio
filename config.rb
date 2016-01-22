@@ -46,8 +46,6 @@ activate :directory_indexes
 # Auto-prefix CSS
 activate :autoprefixer
 
-
-
 # Methods defined in the helpers block are available in templates
 # helpers do
 #   def some_helper
