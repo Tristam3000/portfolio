@@ -46,6 +46,8 @@ activate :directory_indexes
 # Auto-prefix CSS
 activate :autoprefixer
 
+
+
 # Methods defined in the helpers block are available in templates
 # helpers do
 #   def some_helper
@@ -71,7 +73,8 @@ configure :build do
   # activate :asset_hash
 
   # Use relative URLs
-  # activate :relative_assets
+  activate :relative_assets
+  set :relative_links, true
 
   # Or use a different image path
   # set :http_prefix, "/Content/images/"
