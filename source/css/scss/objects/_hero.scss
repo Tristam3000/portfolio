@@ -1,13 +1,28 @@
 .hero {
-  padding-top: 100px;
-  padding-bottom: 100px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  @media only screen and (min-width: 450px) {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
   .mega {
     position: relative;
-    top: 80px;
+    top: 70px;
     font-weight: 400;
     color: mix($aqua,$grey-1,50%);
     z-index: -1;
     font-family: $display;
     letter-spacing: 5px;
+    font-size: 3rem;
+    line-height: 5.2rem;
+    @media only screen and (min-width: 450px) {
+      top: 80px;
+      font-size: 5rem;
+      line-height: 8.2rem;
+      margin-top: 3rem;
+    }
+    @media only screen and (min-width: 600px) {
+      font-size: 7rem;
+    }
   }
 }

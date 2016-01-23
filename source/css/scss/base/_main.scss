@@ -1,7 +1,11 @@
+html, body {
+  overflow-x: hidden;
+}
+
 body {
   background-color: $grey-1;
   color: $black;
-  margin: 20px;
+  margin: 10px;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   &:after {
@@ -13,7 +17,13 @@ body {
     left: 0;
     //z-index: 99;
     display: block;
-    border: 20px solid $white;
+    border: 10px solid $white;
     pointer-events: none;
+  }
+  @media only screen and (min-width: 450px) {
+    margin: 20px;
+    &:after {
+      border: 20px solid $white;
+    }
   }
 }
