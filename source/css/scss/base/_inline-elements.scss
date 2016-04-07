@@ -1,5 +1,5 @@
 a {
-  color: $navy;
+  color: $majorella;
   text-decoration: none;
 }
 
@@ -14,11 +14,11 @@ a {
     display: block;
     width: 100%;
     height: 2px;
-    background-color: $grey-2;
+    background-color: $cool-grey;
   }
   &:hover {
     &:after {
-      background-color: $aqua;
+      background-color: $turquoise;
     }
   }
 }

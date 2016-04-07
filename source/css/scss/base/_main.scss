@@ -3,7 +3,7 @@ html, body {
 }
 
 body {
-  background-color: $grey-1;
+  background-color: $white;
   color: $black;
   margin: 10px;
   -webkit-text-size-adjust: 100%;
@@ -23,7 +23,7 @@ body {
   @media only screen and (min-width: 450px) {
     margin: 20px;
     &:after {
-      border: 20px solid $white;
+      border: 20px solid $grey-border;
     }
   }
 }
