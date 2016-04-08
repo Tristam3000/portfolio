@@ -1,3 +1,12 @@
+::selection {
+  background: rgba($majorella,0.5); /* WebKit/Blink Browsers */
+  color: $white;
+}
+::-moz-selection {
+  background: rgba($majorella,0.5); /* Gecko Browsers */
+  color: $white;
+}
+
 html, body {
   overflow-x: hidden;
 }
@@ -5,25 +14,7 @@ html, body {
 body {
   background-color: $white;
   color: $black;
-  margin: 10px;
+  margin: 0;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
-  &:after {
-    content: "";
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    //z-index: 99;
-    display: block;
-    border: 10px solid $white;
-    pointer-events: none;
-  }
-  @media only screen and (min-width: 450px) {
-    margin: 20px;
-    &:after {
-      border: 20px solid $grey-border;
-    }
-  }
 }

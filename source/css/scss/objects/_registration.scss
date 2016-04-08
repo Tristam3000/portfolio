@@ -1,0 +1,36 @@
+.registration--top-left {
+  position: relative;
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    display: block;
+  }
+  &:before {
+    width: 8px;
+    height: 1px;
+    top: -4px;
+    left: -8px;
+    background-color: $turquoise;
+  }
+  &:after {
+    width: 1px;
+    height: 8px;
+    top: -4px;
+    left: -8px;
+    background-color: $turquoise;
+  }
+}
+
+.heading--reg {
+  position: relative;
+  &:before {
+    content: "";
+    position: absolute;
+    top: calc(50% - 4px);
+    left: -16px;
+    width: 8px;
+    height: 8px;
+    border: 1px solid $cool-grey;
+  }
+}
