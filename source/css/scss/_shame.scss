@@ -1,0 +1,11 @@
+.beach {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: none;
+  height: 32px;
+  background-image: image-url('beachin.png');
+  background-size: contain;
+  &.is-active { display: block; }
+}

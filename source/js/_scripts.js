@@ -4,7 +4,11 @@ $(document).ready(function() {
   $('#show_nav').click(function(e) {
     e.preventDefault();
     $(this).toggleClass('is-active');
-    console.log('click');
+  });
+  
+  $('#show_beach').click(function(e) {
+    e.preventDefault();
+    $('#lifes_a_beach').toggleClass('is-active');
   });
   
   // Email obfuscator script 2.1 by Tim Williams, University of Arizona

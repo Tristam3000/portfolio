@@ -7,12 +7,15 @@
 @import 'scss/base/lists';
 @import 'scss/base/inline-elements';
 @import 'scss/base/buttons';
+@import 'scss/base/images';
 
 @import 'scss/objects/header';
 @import 'scss/objects/footer';
 @import 'scss/objects/hero';
 @import 'scss/objects/grid-overlay';
 @import 'scss/objects/registration';
+
+@import 'scss/pages/landing';
 
 //  Trump previous styling
 @import 'scss/generic/utilities';

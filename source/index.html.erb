@@ -6,12 +6,12 @@ title: Tristam Goch
   <div class="container">
     
     <div class="col-12 overflow-wrapper u-text--center">
-      <img class="img--overflow" src="/" width="110%" height="100%">
+      <img class="img--overflow" src="/media/img/tristam-goch.jpg" width="43.33%">
       <div class="row">
         <div class="col-8 offset-4 u-text--left">
           <h1 class="beta u-color--majorella">Hi, I&rsquo;m Tristam</h1>
           <p>
-            I&rsquo;m a designer &amp; co-founder at <a class="link--inline" href="https://damnfine.io" target="_blank">Damn Fine</a> in London. We design and build things for people on the web. I like complicated problems, simple solutions and long walks on the <a class="link--incognito" href="#">beach</a>.
+            I&rsquo;m a designer &amp; co-founder at <a class="link--inline" href="https://damnfine.io" target="_blank">Damn Fine</a> in London. We design and build things for people on the web. I like complicated problems, simple solutions and long walks on the <a class="link--incognito" id="show_beach" href="#">beach</a>.
           </p>
         </div>
       </div>
@@ -20,7 +20,7 @@ title: Tristam Goch
   </div>
 </section>
 
-<section class="landing__clients grid-overlay">
+<section class="landing__clients u-bg--turquoise">
   <div class="container">
     
     <div class="col-8">
@@ -41,11 +41,12 @@ title: Tristam Goch
             <li>UCL</li>
             <li>Marks &amp; Spencer</li>
             <li>Microsoft</li>
+            <li>Johnson &amp; Johnson</li>
           </ul>
         </div>
       </div>
       
-      <a class="btn">Selected Projects</a>
+<!--      <a class="btn">Selected Projects</a>-->
     </div>
     
   </div>
@@ -75,3 +76,54 @@ title: Tristam Goch
     
   </div>
 </section>
+
+<div class="beach" id="lifes_a_beach"></div>
+
+<canvas id="myCanvas" resize style="position:fixed;z-index:-1;opacity:0.05;"></canvas>
+<script type="text/paperscript" canvas="myCanvas">
+  var width, height, center;
+  var points = 4;
+  var smooth = true;
+  var path = new Path();
+  var mousePos = view.center / 2;
+  var pathHeight = mousePos.y;
+  path.fillColor = '#30343F';
+  initializePath();
+
+  function initializePath() {
+    center = view.center;
+    width = view.size.width;
+    height = view.size.height / 1.5;
+    path.segments = [];
+    path.add(view.bounds.bottomLeft);
+    path.add(0,500);
+    for (var i = 1; i < points; i++) {
+      var point = new Point(width / points * i, center.y);
+      path.add(point);
+    }
+    path.add(view.bounds.topRight + 500);
+    path.add(view.bounds.bottomRight);
+    //path.fullySelected = true;
+  }
+
+  function onFrame(event) {
+    pathHeight += (center.y - mousePos.y - pathHeight) / 100;
+    for (var i = 1; i < points; i++) {
+      var sinSeed = event.count + (i + i % 10) * 100;
+      var sinHeight = Math.sin(sinSeed / 100) * pathHeight;
+      var yPos = Math.sin(sinSeed / 100) * sinHeight + height;
+      path.segments[i].point.y = yPos;
+    }
+    if (smooth)
+      path.smooth();
+  }
+
+  function onMouseMove(event) {
+    mousePos = event.point;
+  }
+
+  // Reposition the path whenever the window is resized:
+  function onResize(event) {
+    initializePath();
+  }
+</script>
