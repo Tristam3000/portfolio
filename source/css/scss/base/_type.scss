@@ -4,15 +4,16 @@
 //  Base
 //  -----
 $display: 'Merriweather', Times, serif;
-$body: 'Lato', Helvetica, Arial, sans-serif;
+$body: 'Work Sans', Helvetica, Arial, sans-serif;
 $mono: 'Source Code Pro', Monaco, mono;
 
 html {
-  font-family: $mono;
+  font-family: $body;
   font-size: 107.5%;
   -webkit-font-smoothing: antialiased;
   letter-spacing: 0.1rem;
   line-height: 1.6;
+  font-weight: 300;
 }
 
 
@@ -42,12 +43,11 @@ h4, .delta,
 h5, .epsilon,
 h6, .zeta {
   //  Change heading typefaces here
-  margin-top: 1.5rem;
-  margin-bottom: 0;
-  font-family: $mono;
-  color: $navy;
+  margin-bottom: 0.75em;
+  font-family: $display;
+  color: $tuna;
   font-weight: 400;
-  line-height: 1.75rem;
+  line-height: 1.75em;
 }
 
 .mega {
@@ -64,14 +64,10 @@ h6, .zeta {
 
 h1, .alpha {
   font-size: 4.242rem;
-  line-height: 4.5rem;
-  margin-top: 3rem;
 }
 
 h2, .beta {
   font-size: 2.828rem;
-  line-height: 3rem;
-  margin-top: 3rem;
 }
 
 h3, .gamma {
