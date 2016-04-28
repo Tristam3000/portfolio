@@ -13,7 +13,7 @@
   
   <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
   
-  <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700|Merriweather:700|Lato' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400|Merriweather:400|Work+Sans:300,400,600' rel='stylesheet' type='text/css'>
   
   <link href="css/styles.css" rel="stylesheet" />
 </head>
@@ -22,53 +22,345 @@
   <body class="index">
     
     <nav class="nav nav--primary" role="navigation">
-  <a class="nav__link nav__link--alpha" href="/" title="Tristam Goch">Tristam Goch</a>
+  <a class="nav__link nav__link--alpha" href="/" title="Tristam Goch">Tristam</a>
   
   <a class="nav__mobile" id="show_nav" title="Show Menu">
     <span class="nav__mobile-icon"></span>
   </a>
   
+<!--
   <div class="nav__inner">
     <a class="nav__link" title="Writing">Writing</a>
     <a class="nav__link" title="About Me">About</a>
     <span class="u-cf"></span>
   </div>
+-->
 </nav>
     
     <div id="main" role="main">
-      <section class="hero">
+      <section class="hero grid-overlay u-height--full landing__hero">
   <div class="container">
     
-    <span class="mega">
-      Hi, I&rsquo;m Tristam
-    </span>
-    
-    <div class="row">
-      <div class="eight columns offset-by-one">
-        <h1 class="gamma">I design and build digital products at <a class="inline-link" href="https://damnfine.io" target="_blank" title="Damn Fine - UX, Design & Development">Damn Fine</a>. I like simple solutions to complicated problems.</h1>
+    <div class="col-12 overflow-wrapper u-text--center">
+      <img class="img--overflow" src="/media/img/tristam-goch.jpg" width="43.33%">
+      <div class="row">
+        <div class="col-8 offset-4 u-text--left">
+          <h1 class="beta u-color--majorella">Hi, I&rsquo;m Tristam</h1>
+          <p>
+            I&rsquo;m a designer &amp; co-founder at <a class="link--inline" href="https://damnfine.io" target="_blank">Damn Fine</a> in London. We design and build things for people on the web. I like complicated problems, simple solutions and long walks on the <a class="link--incognito" id="show_beach" href="#">beach</a>.
+          </p>
+        </div>
       </div>
-    </div> 
+    </div>
     
   </div>
 </section>
+
+<section class="landing__clients u-bg--turquoise">
+  <div class="container">
+    
+    <div class="col-8">
+      <h3 class="delta heading--reg u-color--majorella u-font--mono">Work</h3>
+      
+      <div class="row">
+        <div class="col-6">
+          <ul>
+            <li>Import.io</li>
+            <li>Activision</li>
+            <li>DreamWorks</li>
+            <li>Thomson</li>
+          </ul>
+        </div>
+        
+        <div class="col-6">
+          <ul>
+            <li>UCL</li>
+            <li>Marks &amp; Spencer</li>
+            <li>Microsoft</li>
+            <li>Johnson &amp; Johnson</li>
+          </ul>
+        </div>
+      </div>
+      
+<!--      <a class="btn">Selected Projects</a>-->
+    </div>
+    
+  </div>
+</section>
+
+<section class="landing__skills grid-overlay">
+  <div class="container">
+    
+    <div class="col-4 offset-8">
+      <h3 class="delta heading--reg u-color--majorella u-font--mono">What I Do</h3>
+      <ul>
+        <li>Design</li>
+        <li>User Experience</li>
+        <li>HTML/CSS</li>
+      </ul>
+    </div>
+    
+  </div>
+</section>
+
+<section class="landing__location">
+  <div class="container">
+    
+    <div class="col-4 offset-4">
+      
+    </div>
+    
+  </div>
+</section>
+
+<div class="beach" id="lifes_a_beach"></div>
+
+<canvas id="jellyFriend" resize style="opacity:0.5;"></canvas>
+<script type="text/paperscript" canvas="jellyFriend">
+(function($){
+
+	"use strict";
+
+	var mypaper;
+
+	$(document).ready(function() {
+
+		// initialize the paper animation
+		mypaper = new PaperWrap( $('#jellyFriend')[0] );
+		
+	});
+
+	function fitPaperWraps() {
+		mypaper.fit();
+	}
+
+	$(window).resize(function() {
+
+		waitForFinalEvent(function(){
+			
+			fitPaperWraps();
+
+		}, 50, "resizing-papers");
+
+	});
+
+	var waitForFinalEvent = (function () {
+		var timers = {};
+			return function (callback, ms, uniqueId) {
+		if (!uniqueId) {
+			uniqueId = "Don't call this twice without a uniqueId";
+		}
+		if (timers[uniqueId]) {
+			clearTimeout (timers[uniqueId]);
+		}
+		timers[uniqueId] = setTimeout(callback, ms);
+		};
+	})();
+
+	function PaperWrap( canvasElement ) {
+
+		var mypaper = new paper.PaperScope();
+		mypaper.setup( canvasElement );
+
+		var view = mypaper.view,
+			Point = mypaper.Point,
+			Path = mypaper.Path,
+			Group = mypaper.Group;
+
+		// adjustable variables
+		var mouseForce = 0.1;
+		// other variables
+		var mousePoint = new Point(-1000, -1000);
+
+		function jellyFriend(center, size, color) {
+			this.build(center, size, color);
+		}
+
+		jellyFriend.prototype = {
+			build: function(center, radius, color) {
+				var padding = Math.min(view.size.width, view.size.height) * 0.6;
+
+				
+				var timeScale = 2;
+				var maxWidth = view.size.width - padding * 2;
+				var maxHeight = view.size.height - padding * 2;
+				var w = maxWidth * timeScale;
+				var h = maxHeight * timeScale;
+
+				this.fitRect = new Path.Rectangle({
+					point: [view.size.width / 2 - w / 2, view.size.height / 2 - h / 2],
+					size: [w, h]
+				});
+
+				this.circlePath = new Path.Circle(center, radius);
+
+				this.group = new Group([this.circlePath]);
+				//this.group.strokeColor = "#00FDDC";
+				this.group.position = view.center;
+
+				this.circlePath.fillColor = color;
+				this.circlePath.fullySelected = false;
+				
+				// Mausdistanz
+				this.threshold = radius * 1.4;
+				this.center = center;
+				// Elemente hinzufügen
+				this.circlePath.flatten(radius * 1.5);
+				// wieder zum Kreis machen
+				this.circlePath.smooth();
+				// einpassen in das fitRect
+				this.circlePath.fitBounds( this.fitRect.bounds );
+
+				// control circle erstellen, auf den die einzelnen Punkte später zurückgreifen können
+				this.controlCircle = this.circlePath.clone();
+				this.controlCircle.fullySelected = false;
+				this.controlCircle.visible = false;
+
+				var rotationMultiplicator = radius / 300;
+
+				// Settings pro segment
+				this.settings = [];
+				for( var i = 0; i < this.circlePath.segments.length; i++ ) {
+					var segment = this.circlePath.segments[i];
+					this.settings[i] = {
+						relativeX: segment.point.x - this.center.x,
+						relativeY: segment.point.y - this.center.y,
+						offsetX: rotationMultiplicator,
+						offsetY: rotationMultiplicator,
+						momentum: new Point(0,0)
+					};
+				}
+			},
+			clear: function() {
+				this.circlePath.remove();
+				this.fitRect.remove();
+			},
+			animate: function(event) {
+				
+				this.group.rotate(-0.2, view.center);
+
+				for( var i = 0; i < this.circlePath.segments.length; i++ ) {
+					var segment = this.circlePath.segments[i];
+
+					var settings = this.settings[i];
+					var controlPoint = new Point(
+						//settings.relativeX + this.center.x,
+						//settings.relativeY + this.center.y
+					);
+					controlPoint = this.controlCircle.segments[i].point;
+
+					// Avoid the mouse
+					var mouseOffset = mousePoint.subtract(controlPoint);
+					var mouseDistance = mousePoint.getDistance( controlPoint );
+					var newDistance = 0;
+
+					if( mouseDistance < this.threshold ) {
+						newDistance = (mouseDistance - this.threshold) * mouseForce;
+					}
+
+					var newOffset = new Point(0, 0);
+					if(mouseDistance !== 0){
+						newOffset = new Point(mouseOffset.x / mouseDistance * newDistance, mouseOffset.y / mouseDistance * newDistance);
+					}
+					var newPosition = controlPoint.add( newOffset );
+
+					var distanceToNewPosition = segment.point.subtract( newPosition );
+
+					settings.momentum = settings.momentum.subtract( distanceToNewPosition.divide( 10 ) );
+					settings.momentum = settings.momentum.multiply( 0.8 );
+					
+					// Add automatic rotation
+					
+					var amountX = settings.offsetX;
+					var amountY = settings.offsetY;
+					var sinus = Math.sin(event.time + i*2);
+					var cos =  Math.cos(event.time + i*2);
+					settings.momentum = settings.momentum.add( new Point(cos * -amountX, sinus * -amountY) );
+					
+					// go to the point, now!
+					segment.point = segment.point.add( settings.momentum );
+
+				}
+			}
+		};
+
+		var radius = Math.min( view.size.width, view.size.height) / 1 * 0.7;
+		var jellyFriend = new jellyFriend( view.bounds.center, radius, "#00FDDC" );
+
+		view.onFrame = function(event) {
+			jellyFriend.animate(event);
+		};
+
+		$.support.touch = 'ontouchstart' in window;
+		if( !$.support.touch ) {
+			// this should only run if on a non-touch device, but it keeps running everywhere
+		}
+		var tool = new mypaper.Tool();
+		tool.onMouseMove = function(event) {
+			mousePoint = event.lastPoint;
+		};
+
+
+		var fit = this.fit = function() {
+
+			var $canvas = $( view.element );
+
+			var canvasWidth = $canvas.width();
+			var canvasHeight = $canvas.height();
+
+			$canvas
+				.attr("width", canvasWidth)
+				.attr("height", canvasHeight);
+			
+			mypaper.view.viewSize = new mypaper.Size( canvasWidth, canvasHeight);
+
+		};
+		
+		
+
+		function redrawjellyFriend() {
+
+			// overwrite the global paper object with the local one
+			paper = mypaper;
+
+			radius = Math.min( view.size.width, view.size.height ) / 2;
+			radius = Math.floor( radius * 0.7 );
+
+			jellyFriend.clear();
+			jellyFriend = null;
+			jellyFriend = new jellyFriend( view.bounds.center, radius, "#00FDDC");
+		}
+		
+		view.onResize = function(event) {
+			redrawjellyFriend();
+		};
+	}
+})(jQuery);
+</script>
     </div>
     
     <footer class="footer">
   <div class="container">
     
     <div class="row">
-      <div class="four columns">
-        <p>Tweet at me or send a good old-fashioned email</p>
-        <a class="footer__link inline-link" href="http://twitter.com/tristam3000" target="_blank" title="Twitter">@tristam3000</a>
-        <a class="footer__link inline-link js-mailto-link" href="" title="Email"></a>
+      <div class="col-4">
+        <p>
+          Tweet at me<br>
+          <a class="link--inline" href="http://twitter.com/tristam3000" title="Holla at ya boy" target="_blank">@tristam3000</a>
+        </p>
+        
+        <p>
+          or send a good old-fashioned email<br>
+          <a class="link--inline js-mailto-link" href="" title="I think this email thing is gonna take off"></a>
+        </p>
       </div>
 
-      <div class="four columns">
-        <p>This site's source is available for learning purposes on GitHub:</p>
-        <a class="footer__link inline-link" href="http://github.com/tristam3000" target="_blank" title="Github">View Source</a>
+      <div class="col-4">
+        <p>This site's source is available for <span title="mostly my education">educational purposes</span> on GitHub:</p>
+        <a class="link--inline" href="http://github.com/tristam3000" title="Source on Github" target="_blank">View Source</a>
       </div>
 
-      <div class="four columns">
+      <div class="col-4">
         <p>Copyright &copy; 2016 Tristam Goch</p>
       </div>
     </div>
