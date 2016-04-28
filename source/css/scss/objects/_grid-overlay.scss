@@ -1,0 +1,48 @@
+.grid-overlay {
+  position: relative;
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    display: block;
+    height: 100%;
+    border-left: 1px solid rgba($grey-border,0.5);
+    border-right: 1px solid rgba($grey-border,0.5);
+    transform: translateX(-50%);
+    pointer-events: none;
+  }
+  &:before {
+    left: 50%;
+    width: 100%;
+    max-width: 1024px;
+  }
+  &:after {
+    left: 50%;
+    width: 100%;
+  }
+  @media only screen and (min-width:400px) {
+    &:before {
+      width: 85%;
+    }
+  }
+  @media only screen and (min-width:550px) {
+    &:before {
+      width: 80%;
+    }
+    &:after {
+      width: calc((100% / 3) - 8%);
+    }
+  }
+}
+
+.overflow-wrapper {
+  position: relative;
+  height: 100%;
+}
+
+.img--overflow {
+  position: absolute;
+  z-index: 0;
+  left: -5%;
+}

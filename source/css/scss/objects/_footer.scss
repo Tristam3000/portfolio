@@ -1,8 +1,8 @@
 .footer {
   padding: 24px 0 0;
-  border-bottom: 3px solid $aqua;
-  background-color: mix($grey-1,$grey-2,80%);
+  border-bottom: 3px solid $turquoise;
   font-size: 0.75rem;
+  background-color: rgba(lighten($cool-grey,32),0.2);
 }
 
 .footer__link {

@@ -1,7 +1,22 @@
+.u-height--full {
+  height: 100vh;
+  .container { height: 100%; }
+}
+
 .u-lowercase { text-transform: lowercase; }
 
-.u-text-left   { text-align: left; }
-.u-text-center { text-align: center; }
-.u-text-right  { text-align: right; }
+.u-text--left   { text-align: left; }
+.u-text--center { text-align: center; }
+.u-text--right  { text-align: right; }
 
-.u-text-light { color: $white; }
+.u-font--mono {
+  font-family: $mono;
+  font-weight: 400;
+}
+
+.u-color-white { color: $white; }
+.u-color--tuna { color: $tuna; }
+.u-color--majorella { color: $majorella; }
+.u-color--turquoise { color: $turquoise; }
+
+.u-bg--turquoise { background-color: $turquoise; }
